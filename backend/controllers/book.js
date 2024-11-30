@@ -103,8 +103,7 @@ exports.deleteBook = (req, res, next) => {
           message: "Book Deleted!",
         });
       });
-    })
-    .catch((error) => {
+    }).catch((error) => {
       res.status(400).json({
         error: error,
       });
