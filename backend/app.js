@@ -1,14 +1,12 @@
 const express = require("express");
 const mongoose = require("mongoose");
 // const BookRoutes = require("./routes/book");
-// const userRoutes = require("./routes/user");
+const userRoutes = require("./routes/user");
 const path = require("path");
 
 const app = express();
 mongoose
-  .connect(
-    "mongodb+srv://OCGrimoire:TheGrim4@grimoire.s1n7h.mongodb.net/?retryWrites=true&w=majority&appName=Grimoire"
-  )
+  .connect(process.env.DB_URL)
   .then(() => {
     console.log("Successfully connected to MongoDB Atlas!");
   })
@@ -35,6 +33,6 @@ app.use((req, res, next) => {
 app.use("/images", express.static(path.join(__dirname, "images")));
 
 // app.use("/api/book", BookRoutes);
-// app.use("/api/auth", userRoutes);
+app.use("/api/auth", userRoutes);
 
 module.exports = app;
