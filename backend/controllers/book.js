@@ -42,7 +42,7 @@ exports.getOneBook = (req, res, next) => {
     });
 };
 
-exports.addBook = (req, res, next) => {
+exports.updateBook = (req, res, next) => {
   let book = new Book({ _id: req.params._id });
   if (req.file) {
     const url = req.protocol + "://" + req.get("host");
