@@ -2,7 +2,9 @@ const Book = require("../models/book");
 const fs = require("fs");
 
 exports.createBook = (req, res, next) => {
+  console.log(req.file);
   req.body.book = JSON.parse(req.body.book);
+
   const url = req.protocol + "://" + req.get("host");
   const book = new Book({
     userId: req.body.book.userId,
@@ -12,7 +14,7 @@ exports.createBook = (req, res, next) => {
     year: req.body.book.year,
     genre: req.body.book.genre,
     ratings: req.body.book.ratings,
-    avergeRating: req.body.book.avergeRating,
+    averageRating: req.body.book.averageRating,
   });
   book
     .save()
@@ -68,7 +70,7 @@ exports.updateBook = (req, res, next) => {
       year: req.body.year,
       genre: req.body.genre,
       ratings: req.body.ratings,
-      avergeRating: req.body.avergeRating,
+      averageRating: req.body.averageRating,
     };
   } else {
     book = {
@@ -80,7 +82,7 @@ exports.updateBook = (req, res, next) => {
       year: req.body.year,
       genre: req.body.genre,
       ratings: req.body.ratings,
-      avergeRating: req.body.avergeRating,
+      averageRating: req.body.averageRating,
     };
   }
   Book.updateOne({ _id: req.params.id }, book)
