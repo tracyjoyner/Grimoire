@@ -112,15 +112,17 @@ exports.deleteBook = (req, res, next) => {
     }
     const filename = book.imageUrl.split("/images/")[1];
     fs.unlink("images/" + filename, () => {
-      Book.deleteOne({ _id: req.params.id }).then(() => {
-        res.status(200).json({
-          message: "Book Deleted!",
+      Book.deleteOne({ _id: req.params.id })
+        .then(() => {
+          res.status(200).json({
+            message: "Book Deleted!",
+          });
+        })
+        .catch((error) => {
+          res.status(400).json({
+            error: error,
+          });
         });
-      });
-    }).catch((error) => {
-      res.status(400).json({
-        error: error,
-      });
     });
   });
 };
