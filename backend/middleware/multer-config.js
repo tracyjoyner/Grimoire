@@ -1,8 +1,9 @@
-import path from "path";
-import multer, { MulterError } from "multer";
-import sharp from "sharp";
+const path = require("path");
+const multer = require("multer");
+const { MulterError } = require("multer");
+const sharp = require("sharp");
 
-export default (req, res, next) => {
+module.exports = (req, res, next) => {
   const upload = multer({
     fileFilter: (req, file, cb) => {
       if (file.mimetype !== "image/png" && file.mimetype !== "image/jpeg") {
