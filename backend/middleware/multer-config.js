@@ -13,7 +13,7 @@ module.exports = (req, res, next) => {
       return cb(null, true);
     },
     limits: {
-      fileSize: 1024 * 1024 * 2,
+      fileSize: 10024 * 10024 * 2,
     },
     storage: multer.memoryStorage(),
   }).single("image");
@@ -56,8 +56,6 @@ module.exports = (req, res, next) => {
     }
   });
 };
-
-// const multer = require("multer");
 
 // const MIME_TYPES = {
 //   "image/jpg": "jpg",
